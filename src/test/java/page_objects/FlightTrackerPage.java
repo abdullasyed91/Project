@@ -8,8 +8,12 @@ import org.openqa.selenium.WebDriver;
 
 public class FlightTrackerPage extends NavigationBar {
 
-    private final By FlightNumberTab = By.id("//*[contains(text(),'Flight number')]");
+    private final By FlightNumberTab = By.xpath("//*[contains(text(),'Flight number')]");
     private final By onFlightTrackerPage = By.xpath("//*[contains(text(),'worldwide flight')]");
+    private final By AirlineInputField = By.id("E8Y--flightNumberTrackForm-airline");
+    private final By FlightNumberInputField = By.id("E8Y--flightNumberTrackForm-flight-number");
+    private final By FlightDate = By.id("E8Y--flightNumberTrackForm-date-start");
+    private final By SearchButton = By.id("E8Y--flightNumberTrackForm-submit");
     private final static Logger LOGGER = LogManager.getLogger(FlightTrackerPage.class);
 
     public FlightTrackerPage(WebDriver driver) {
@@ -21,6 +25,28 @@ public class FlightTrackerPage extends NavigationBar {
         ActOn.wait(driver, onFlightTrackerPage).waitForElementToBeVisible();
         ActOn.validate(driver, onFlightTrackerPage).elementIsDisplayed();
         LOGGER.debug("Validating the flight tracker page");
+        return this;
+    }
+
+    public FlightTrackerPage typeAirlineName(String value) {
+        ActOn.element(driver, AirlineInputField).setValue(value);
+        LOGGER.debug("Typing the airline name "  + value);
+        return this;
+    }
+    public FlightTrackerPage typeFlightNumber(String value) {
+        ActOn.element(driver, FlightNumberInputField).setValue(value);
+        LOGGER.debug("Typing the flight number " + value);
+        return this;
+    }
+
+    public FlightTrackerPage selectDate(String value){
+        ActOn.element(driver, FlightDate).selectValue(value);
+        LOGGER.debug("Selecting the flight date");
+        return this;
+    }
+
+    public FlightTrackerPage clickSearch() {
+        ActOn.element(driver, SearchButton).click();
         return this;
     }
 }

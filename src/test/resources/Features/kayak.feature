@@ -55,3 +55,9 @@ Feature: Kayak Project
 #      | From     | To      | TravelDate | ReturnDate |
 #      | New York | Trenton | 1/25       | 2/4        |
 #    Then the user should see the searched trains
+
+#  Scenario: Tracking a JetBlue flight
+#    When user navigates to flight tracker page and upon entering data clicks on the search button
+#      | Airline | FlightNumber |
+#      | JetBlue | 564          |
+#    Then user should the flight tracker page

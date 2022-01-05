@@ -10,7 +10,7 @@ import page_objects.NavigationBar;
 import page_objects.PackagesPage;
 
 public class Packages_steps {
-    private static final Logger LOGGER = LogManager.getLogger(PackagesPage.class);
+    private static final Logger LOGGER = LogManager.getLogger(Packages_steps.class);
 
     WebDriver driver = Hooks.driver;
 
